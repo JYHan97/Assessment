@@ -3,18 +3,24 @@ const userController = require('../controller/user.controller');
 module.exports = (app) => {
   // register a new user
   app.get('/user/register', (req, res) => {
-    res.send('Access Rigistration Page');
+    res.render('register.ejs');
   });
 
   app.post('/user/register', (req, res) => {
-    // res.send('POST Rigistration Page');
-    userController.addOne(req.body, res);
+    userController.addOne(req.body)
+      .then(() => {
+        res.render('confirmation');
+      })
+      .catch(err => {
+        console.log(err)
+      })
   });
 
   // Get admin report
   app.get('/admin/report', (req, res) => {
-    userController.findAll();
-    // res.send('Access Admin Report Page');
+    userController.findAll()
+      .then(users => res.render('admin.ejs', users))
+      .catch(err => next(err));
   });
 
   // others 

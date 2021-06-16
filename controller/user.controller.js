@@ -1,19 +1,16 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
-exports.addOne = (req, res) => {
-  const firstName = req.firstName;
-  const lastName = req.lastName;
+exports.addOne = async (req) => {
+  const userInfo = {
+    firstName: req.firstName,
+    lastName: req.lastName
+  }
 
-  const newUser = new User({ firstName: firstName, lastName: lastName });
-
-  newUser.save((err) => {
-    err ? console.log(err) : res.send('Successfully Created User');
-  });
+  const newUser = new User(userInfo);
+  await newUser.save();
 };
 
-exports.findAll = (req, res) => {
-  User.find().then((users) => {
-    console.log(users)
-  })
+exports.findAll = async (req, res) => {
+  return await User.find()
 };

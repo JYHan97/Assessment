@@ -3,8 +3,10 @@ const PORT = process.env.PORT || 5000;
 // Express
 const express = require('express');
 const app = express();
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static('public'))
+app.set('view engine', 'ejs');
 
 
 // DataBase
