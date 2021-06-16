@@ -19,7 +19,10 @@ module.exports = (app) => {
   // Get admin report
   app.get('/admin/report', (req, res) => {
     userController.findAll()
-      .then(users => res.render('admin.ejs', users))
+      .then(users => {
+        console.log(users)
+        res.render('admin', { users })
+      })
       .catch(err => next(err));
   });
 
