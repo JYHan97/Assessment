@@ -36,7 +36,7 @@ const userSchema = new Schema({
     required: true,
     default: 'US'
   },
-  timeStamp: {
+  createAt: {
     type: Date,
     required: true
   },

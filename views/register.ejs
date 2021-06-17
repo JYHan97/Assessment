@@ -20,7 +20,7 @@
       </div>
       <div class="row g-2">
         <div class="col-md-6">
-          <label for="address2" class="form-label">Address Line 2</label>
+          <label for="address2" class="form-label">Address Line 2 (optional)</label>
           <input type="text" class="form-control" name="addressTwo" id="address2">
         </div>
       </div>
@@ -31,15 +31,17 @@
         </div>
         <div class="col-md-3">
           <label for="state" class="form-label">State</label>
-          <select class="form-select" name="state" id="state" required>
-            <option selected disabled value="">Choose...</option>
-            <option>TX</option>
-            <option>VA</option>
-          </select>
+          <input type="text" class="form-control" name="state" id="state" required>
+        </div>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-3">
+          <label for="zip" class="form-label">Zip (5 or 9 digits)</label>
+          <input type="text" class="form-control" pattern="^\d{5}(?:[-\s]\d{4})?$" name="zip" id="zip" required>
         </div>
         <div class="col-md-3">
-          <label for="zip" class="form-label">Zip</label>
-          <input type="text" class="form-control" name="zip" id="zip" required>
+          <label for="county" class="form-label">Country (US Only)</label>
+          <input type="text" class="form-control" name="country" id="country" value="US" disabled>
         </div>
       </div>
 
