@@ -1,45 +1,49 @@
 <%- include('partials/header') %>
-  <h1>Registration Page</h1>
   <div class="container">
+    <h1>Registration Page</h1>
     <form class="row g-2 needs-validation" method="post" action="/user/register">
-      <div class="col-md-4">
-        <label for="firstName" class="form-label">First name</label>
-        <input type="text" class="form-control" name="firstName" id="firstName" required>
-        <div class="valid-feedback">
-          Looks good!
+      <div class="row g-2">
+        <div class="col-md-3">
+          <label for="firstName" class="form-label">First name</label>
+          <input type="text" class="form-control" name="firstName" id="firstName" required>
+        </div>
+        <div class="col-md-3">
+          <label for="lastName" class="form-label">Last name</label>
+          <input type="text" class="form-control" name="lastName" id="lastName" required>
         </div>
       </div>
-      <div class="col-md-4">
-        <label for="lastName" class="form-label">Last name</label>
-        <input type="text" class="form-control" name="lastName" id="lastName" required>
-        <div class="valid-feedback">
-          Looks good!
+      <div class="row g-2">
+        <div class="col-md-6">
+          <label for="address1" class="form-label">Address Line 1</label>
+          <input type="text" class="form-control" name="addressOne" id="address1" required>
         </div>
       </div>
-      <!-- <div class="col-md-6">
-        <label for="city" class="form-label">City</label>
-        <input type="text" class="form-control" id="city" required>
-        <div class="invalid-feedback">
-          Please provide a valid city.
+      <div class="row g-2">
+        <div class="col-md-6">
+          <label for="address2" class="form-label">Address Line 2</label>
+          <input type="text" class="form-control" name="addressTwo" id="address2">
         </div>
       </div>
-      <div class="col-md-3">
-        <label for="state" class="form-label">State</label>
-        <select class="form-select" id="state" required>
-          <option selected disabled value="">Choose...</option>
-          <option>...</option>
-        </select>
-        <div class="invalid-feedback">
-          Please select a valid state.
+      <div class="row g-2">
+        <div class="col-md-3">
+          <label for="city" class="form-label">City</label>
+          <input type="text" class="form-control" name="city" id="city" required>
+        </div>
+        <div class="col-md-3">
+          <label for="state" class="form-label">State</label>
+          <select class="form-select" name="state" id="state" required>
+            <option selected disabled value="">Choose...</option>
+            <option>TX</option>
+            <option>VA</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="zip" class="form-label">Zip</label>
+          <input type="text" class="form-control" name="zip" id="zip" required>
         </div>
       </div>
-      <div class="col-md-3">
-        <label for="zip" class="form-label">Zip</label>
-        <input type="text" class="form-control" id="zip" required>
-        <div class="invalid-feedback">
-          Please provide a valid zip.
-        </div>
-      </div> -->
+
+
       <div class="col-12">
         <button class="btn btn-primary" type="submit">Register</button>
       </div>
