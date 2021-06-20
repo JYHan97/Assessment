@@ -40,7 +40,7 @@
           <%= user.country %>
         </td>
         <td>
-          <%= user.createAt %>
+          <%= user.createAt.toLocaleDateString()+"-"+ user.createAt.toLocaleTimeString()%>
         </td>
       </tr>
       <%}%>

@@ -59,12 +59,12 @@ module.exports = (app) => {
     })
   }));
 
-  // 
+  // Show user's information
   app.get('/user/confirmation', (req, res) => {
     res.render('confirmation')
   })
 
-  // Get admin report
+  // Get admin report of all registration
   app.get('/admin/report', (req, res, next) => {
     userController.findAll()
       .then(users => {

@@ -1,0 +1,8 @@
+{
+  "firstName": "testFirstName",
+  "lastName": "testLastName",
+  "city": "Good City",
+  "state": "Great",
+  "zip": "12345",
+  "country": "US"
+}
