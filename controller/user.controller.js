@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
+const AppError = require('../utils/AppError');
 
-exports.addOne = async (req) => {
+exports.addOne = async (req, res) => {
+  // collect data from request body
   const userInfo = {
     firstName: req.firstName,
     lastName: req.lastName,
@@ -13,10 +15,17 @@ exports.addOne = async (req) => {
     createAt: req.createAt != undefined ? new Date(req.createAt) : new Date()
   }
 
-  // console.log(userInfo);
-
+  // Check if user already exist in DB
+  // By firstName + lastName + Address1 + zip
+  await User.find({ firstName: userInfo.firstName, lastName: userInfo.lastName, addressOne: userInfo.addressOne, zip: userInfo.zip })
+    .then(user => {
+      if (user.length > 0) {
+        throw new AppError(401, 'User already exist')
+      }
+    })
   const newUser = new User(userInfo);
   await newUser.save();
+
 };
 
 exports.findAll = async (req, res) => {

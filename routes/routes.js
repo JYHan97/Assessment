@@ -1,34 +1,81 @@
 const userController = require('../controller/user.controller');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/AppError');
+const { checkSchema, validationResult } = require('express-validator');
+
+
+// Check userSchema valiation
+const registrationSchema = {
+  firstName: {
+    notEmpty: true,
+    errorMessage: "First name cannot be empty"
+  },
+  lastName: {
+    notEmpty: true,
+    errorMessage: "Last name cannot be empty"
+  },
+  addressOne: {
+    notEmpty: true,
+    errorMessage: "Address line one cannot be empty"
+  },
+  city: {
+    notEmpty: true,
+    errorMessage: "City cannot be empty"
+  },
+  state: {
+    notEmpty: true,
+    errorMessage: "State cannot be empty"
+  },
+  zip: {
+    isPostalCode: {
+      options: 'US'
+    },
+    errorMessage: "Zip code should be 5 or 9 digit"
+  }
+}
 
 module.exports = (app) => {
-  // register a new user
-  app.get('/user/register', (req, res) => {
+  // Show registration page
+  app.get('/user/register', (req, res, next) => {
     res.render('register.ejs');
   });
 
-  app.post('/user/register', (req, res) => {
-    userController.addOne(req.body)
+  // Create a new register record
+  app.post('/user/register', checkSchema(registrationSchema), catchAsync(async (req, res, next) => {
+    // Check required field and pattern
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new AppError(401, "Invalid input")
+    }
+
+    userController.addOne(req.body, res)
       .then(() => {
-        res.render('confirmation');
+        res.redirect('/user/confirmation')
       })
-      .catch(err => {
-        console.log(err)
-      })
-  });
+      .catch(err => next(err));
+    // if the Promise is rejected this will catch it
+    process.on('unhandledRejection', error => {
+      throw error
+    })
+  }));
+
+  // 
+  app.get('/user/confirmation', (req, res) => {
+    res.render('confirmation')
+  })
 
   // Get admin report
   app.get('/admin/report', (req, res) => {
     userController.findAll()
       .then(users => {
-        console.log(users)
         res.render('admin', { users })
       })
       .catch(err => next(err));
   });
 
   // others 
-  app.get("*", (req, res) => {
-    res.send("Hi there! You might get lost :(")
+  app.all("*", (req, res, next) => {
+    next(new AppError(404, 'Page Not Found'));
   });
 }
 

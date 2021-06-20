@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+  <div class="container">
+    <h1>Hello Welcome to Registration System!</h1>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">
+            <%=err.message%>
+          </h4>
+        </div>
+      </div>
+    </div>
+    <a href="/user/register" class="btn btn-primary btn-lg"> Click to Register</a>
+  </div>
+
+  <%- include('partials/footer') %>

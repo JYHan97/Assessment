@@ -1,19 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thanks for Registration</title>
-</head>
-
-<body>
+<%- include('partials/header') %>
   <div class="container">
-    <h1>You are all set! </h1>
     <h2>Thanks for your registration!</h2>
+    <h3> Please confirm your information:</h3>
+
+    <p class="fs-5">
+      First Name: <span id="fn"></span>
+    </p>
+    <p class="fs-5">
+      Last Name: <span id="ln"></span>
+    </p>
+    <p class="fs-5">
+      Address line 1: <span id="add1"></span>
+    </p>
+    <p class="fs-5">
+      Address line 2: <span id="add2"></span>
+
+    </p>
+    <p class="fs-5">
+      City: <span id="city"></span>
+
+    </p>
+    <p class="fs-5">
+      State: <span id="state"></span>
+
+    </p>
+    <p class="fs-5">
+      Zip: <span id="zip"></span>
+    </p>
+    <p class="fs-5">
+      Contry: <span id="country"></span>
+    </p>
+
+
   </div>
-
-</body>
-
-</html>
+  <script>
+    const userInfo = JSON.parse(sessionStorage.getItem("USER"));
+    for (let [key, value] of Object.entries(userInfo)) {
+      document.getElementById(key).innerHTML = value;
+    }
+  </script>
+  <%- include('partials/footer') %>
