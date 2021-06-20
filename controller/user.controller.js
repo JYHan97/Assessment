@@ -31,3 +31,10 @@ exports.addOne = async (req, res) => {
 exports.findAll = async (req, res) => {
   return await User.find().sort({ 'createAt': -1 })
 };
+
+exports.findSome = async (req, res) => {
+  const { key, value } = req.query;
+  const query = {};
+  query[key] = value
+  return await User.find(query).sort({ 'createAt': -1 })
+}

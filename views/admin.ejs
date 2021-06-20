@@ -1,6 +1,19 @@
 <%- include('partials/header') %>
   <div class="container">
     <h1>Admin Report Page</h1>
+    <form action="/admin/report/search" method="GET">
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="keyWord">Search by</label>
+        <select class="form-select" name="key" id="keyWord">
+          <option selected value="firstName">First Name</option>
+          <option value="lastName">Last Name</option>
+          <option value="state">State</option>
+        </select>
+        <input type="text" class="form-control" id="value" name="value" placeholder="..." aria-label="firstName">
+        <button class="btn btn-outline-secondary" type="submit">Button</button>
+      </div>
+
+    </form>
     <%- include('partials/report', {users: users}); %>
   </div>
   <%- include('partials/footer') %>

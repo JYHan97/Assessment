@@ -65,13 +65,26 @@ module.exports = (app) => {
   })
 
   // Get admin report
-  app.get('/admin/report', (req, res) => {
+  app.get('/admin/report', (req, res, next) => {
     userController.findAll()
       .then(users => {
         res.render('admin', { users })
       })
       .catch(err => next(err));
   });
+
+  // Get admin report by given filter
+  app.get('/admin/report/search', (req, res, next) => {
+    if (!req.query) {
+      throw new AppError(400, "Invalid search")
+    }
+
+    userController.findSome(req, res)
+      .then(users => {
+        res.render('admin', { users })
+      })
+      .catch(err => next(err));
+  })
 
   // others 
   app.all("*", (req, res, next) => {
