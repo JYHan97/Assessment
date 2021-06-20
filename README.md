@@ -23,6 +23,11 @@ Software Engineer Assessment
     - Node.js
     - Express
     - MongoDB
+  - Used module:
+    - mongoose
+    - express-validator
+  - Test:
+    - Jest
 
 ### Acomplished feature
  - User registration
@@ -44,6 +49,10 @@ Software Engineer Assessment
   - link: https://docs.google.com/document/d/1ELjuxlg6AhziAs0rjKKaHBfMu-D5gzXAf_ZdCipAw-A/edit?usp=sharing
 
 ### Next steps
-- Database back up. 
+- Database back up
   - MongoDB M0 Cluster is a free solution for cloud database. Unfortunately, the free solution didn't support back up set.
   - However, in advanced cluster solution, we can set the cluster be backed up and restore with AWS, GCP or Azure.
+- CRUD support
+  - May need support "DELETE" and "UPDATE" in the future
+- BDD and TDD
+  - already set up test enviroment, do more automate test in the future

@@ -1,21 +1,30 @@
 <%- include('partials/header') %>
   <div class="container">
     <h1>Registration Page</h1>
-    <form class="row g-2 needs-validation" method="post" action="/user/register">
+    <form class="row g-2 validation-register" method="post" action="/user/register" novalidate>
       <div class="row g-2">
         <div class="col-md-3">
           <label for="firstName" class="form-label">First name</label>
           <input type="text" class="form-control" name="firstName" id="firstName" required>
+          <div class="invalid-feedback">
+            Required field
+          </div>
         </div>
         <div class="col-md-3">
           <label for="lastName" class="form-label">Last name</label>
           <input type="text" class="form-control" name="lastName" id="lastName" required>
+          <div class="invalid-feedback">
+            Required field
+          </div>
         </div>
       </div>
       <div class="row g-2">
         <div class="col-md-6">
           <label for="address1" class="form-label">Address Line 1</label>
           <input type="text" class="form-control" name="addressOne" id="address1" required>
+          <div class="invalid-feedback">
+            Required field
+          </div>
         </div>
       </div>
       <div class="row g-2">
@@ -28,16 +37,25 @@
         <div class="col-md-3">
           <label for="city" class="form-label">City</label>
           <input type="text" class="form-control" name="city" id="city" required>
+          <div class="invalid-feedback">
+            Required field
+          </div>
         </div>
         <div class="col-md-3">
           <label for="state" class="form-label">State</label>
           <input type="text" class="form-control" name="state" id="state" required>
+          <div class="invalid-feedback">
+            Required field
+          </div>
         </div>
       </div>
       <div class="row g-2">
         <div class="col-md-3">
           <label for="zip" class="form-label">Zip (5 or 9 digits)</label>
           <input type="text" class="form-control" pattern="^\d{5}(?:[-\s]\d{4})?$" name="zip" id="zip" required>
+          <div class="invalid-feedback">
+            Zip code has to be 5 or 9 digits
+          </div>
         </div>
         <div class="col-md-3">
           <label for="county" class="form-label">Country (US Only)</label>
@@ -51,5 +69,28 @@
       </div>
     </form>
   </div>
+
+  <script>
+    // src: Bootsrap form validation [https://getbootstrap.com/docs/5.0/forms/validation/]
+    (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.validation-register')
+
+      // Loop over them and prevent submission
+      Array.from(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  </script>
 
   <%- include('partials/footer') %>

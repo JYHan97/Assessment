@@ -1,36 +1,45 @@
 <%- include('partials/header') %>
   <div class="container">
-    <h2>Thanks for your registration!</h2>
-    <h3> Please confirm your information:</h3>
+    <div class="row">
+      <h2>Thanks for your registration!</h2>
+      <h3> Please confirm your information:</h3>
+    </div>
 
-    <p class="fs-5">
-      First Name: <span id="fn"></span>
-    </p>
-    <p class="fs-5">
-      Last Name: <span id="ln"></span>
-    </p>
-    <p class="fs-5">
-      Address line 1: <span id="add1"></span>
-    </p>
-    <p class="fs-5">
-      Address line 2: <span id="add2"></span>
+    <div class="row">
+      <p class="fs-5">
+        First Name: <span id="fn"></span>
+      </p>
+      <p class="fs-5">
+        Last Name: <span id="ln"></span>
+      </p>
+      <p class="fs-5">
+        Address line 1: <span id="add1"></span>
+      </p>
+      <p class="fs-5">
+        Address line 2: <span id="add2"></span>
 
-    </p>
-    <p class="fs-5">
-      City: <span id="city"></span>
+      </p>
+      <p class="fs-5">
+        City: <span id="city"></span>
 
-    </p>
-    <p class="fs-5">
-      State: <span id="state"></span>
+      </p>
+      <p class="fs-5">
+        State: <span id="state"></span>
 
-    </p>
-    <p class="fs-5">
-      Zip: <span id="zip"></span>
-    </p>
-    <p class="fs-5">
-      Contry: <span id="country"></span>
-    </p>
-    <a href="/user/register" class="btn btn-primary btn-lg"> Register Another</a>
+      </p>
+      <p class="fs-5">
+        Zip: <span id="zip"></span>
+      </p>
+      <p class="fs-5">
+        Contry: <span id="country"></span>
+      </p>
+    </div>
+
+    <div class="row g-2">
+      <div class="col-md-2">
+        <a href="/user/register" class="btn btn-primary btn-lg"> Register Another</a>
+      </div>
+    </div>
 
   </div>
   <script>
